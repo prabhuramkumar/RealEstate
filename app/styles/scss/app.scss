@@ -1,0 +1,67 @@
+/****** Common *******/
+h1, h2, h3, h4, h5, h6, label, a{
+  font-family: 'Arial';
+  margin:0;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+html, body{
+  height: 100%;
+}
+
+
+/**** Utilities *****/
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+/******* App *********/
+.main {
+  border: 1px solid #666;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.main__footer,
+.main__header {
+  border-top: 1px solid #666;
+  background: #333333;
+}
+
+.main__header, 
+.main__container, 
+.main__footer {
+  padding: 15px;
+}
+
+.main__header {
+  height: 100px;
+}
+
+.header__title {
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.main__container {
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  height: calc(100% - 200px);
+}
+
+.header__desc,
+.footer__copyright {
+  font-size: 10px;
+  color: #fff;
+  letter-spacing: 3px;
+}

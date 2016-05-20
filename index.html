@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="app/styles/css/main.css">
+
+  <script src="node_modules/requirejs/require.js" data-main="app/main"></script>
+</head>
+<body>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div class="main">
+    <header class="main__header">
+      <h1 class="header__title">Property</h1>
+      <p class="header__desc"> Welcome to the Dashboard!</p>
+    </header>
+
+    <div class="main__container" ui-view></div>
+
+    <footer class="main__footer">
+      <p class="footer__copyright"> App: v0.1</p>
+    </footer>
+  </div>
+
+</body>
+</html>
