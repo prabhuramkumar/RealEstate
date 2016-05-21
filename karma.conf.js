@@ -8,16 +8,21 @@ module.exports = function(config){
     files : [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'app/common/**/*.js',
-      'app/components/**/*.js',
-      'app/app.js'
+      'test-main.js',
+      {pattern: 'app/common/**/*.js', included: false},
+      {pattern: 'app/components/**/*.js', included: false},
+      {pattern: 'config/*.js', included: false},
+      {pattern: 'spec/*.js', included: true},
+      {pattern: 'app/app.js', included: false}
     ],
-
+    
     autoWatch : true,
 
-    exclude: ['app/main.js', 'app/router.js'],
+    exclude: ['app/main.js'],
 
     browsers : ['Chrome'],
+
+    singleRun: true,
 
     plugins : [
             'karma-requirejs',

@@ -13,9 +13,10 @@ var allowCrossDomain = function(req, res, next) {
     next();
 }
 
+
 app.use(allowCrossDomain);
 
-require(__dirname + '/config/routes')(app);
+require(__dirname + '/config/routes')(app, fs, path);
 
 
 app.use(express.static(path.join(__dirname, '')));
