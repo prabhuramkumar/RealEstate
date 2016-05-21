@@ -2,6 +2,8 @@ var fs = require('fs');
 var path = require('path');
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+
 
 
 //check whether it can be deleted
@@ -13,7 +15,7 @@ var allowCrossDomain = function(req, res, next) {
     next();
 }
 
-
+app.use(bodyParser.json());
 app.use(allowCrossDomain);
 
 require(__dirname + '/config/routes')(app, fs, path);
