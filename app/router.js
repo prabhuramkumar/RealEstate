@@ -3,9 +3,9 @@ define(['ui-router'], function(app){
   function routes($stateProvider) {
     $stateProvider.state('/', {
       url: '/',
-      templateUrl: 'app/components/property_list/property_list_view.html'
-      // controller: 'PropertyListCtrl',
-      // controllerAs: 'PropertyListCtrl'
+      templateUrl: 'app/components/property_list/property_list_view.html',
+      controller: 'propertyListController',
+      controllerAs: 'PropertyListCtrl'
     })
   };
 

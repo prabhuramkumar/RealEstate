@@ -1,12 +1,23 @@
 define(['angular',
-	'components/property/property_directive',
-	'components/property_list/property_list_service',
-	'components/property_list/property_list_controller'],
+	'propertyController',
+	'propertyDirective',
+	'propertyListService',
+	'propertyListController',
+	'propertyListDirective'],
 	
-  function(angular, propertyDirective, propertyListService, propertyListController){
+  function(angular, 
+  	propertyController, 
+  	propertyDirective, 
+  	propertyListService, 
+  	propertyListController,
+  	propertyListDirective) { 
+
     var propertyModule = angular.module('propertyModule', []);
 
+    propertyModule.controller('propertyController', propertyController);
     propertyModule.directive('propertyDirective', propertyDirective);
-    propertyModule.service('propertyListService', propertyListService);
-    propertyModule.controller('propertyListService', propertyListService);
+
+    propertyModule.factory('propertyListService', propertyListService);
+    propertyModule.controller('propertyListController', propertyListController);
+    propertyModule.directive('propertyListDirective', propertyListDirective);
 });

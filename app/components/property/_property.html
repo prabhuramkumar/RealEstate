@@ -1,1 +1,7 @@
-<h2>Property Directive</h2>
+<div class="property">
+	<div class="property__header" style="background-color: {{property.agency.brandingColors.primary}}">{{property.id}}</div>
+	<div class="property__body"><img src="{{property.mainImage}}" width="100%" /></div>
+	<div class="property__footer">{{property.price}}</div>
+	<button class="add-button" ng-if="!saved" ng-click="propertyCtrl.addProperty(property)">Add</button>
+	<button class="add-button" ng-if="saved" ng-click="propertyCtrl.deleteProperty(property)">Delete</button>
+</div>

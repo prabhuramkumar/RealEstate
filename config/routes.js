@@ -9,7 +9,7 @@ module.exports = function(router, fs, path){
 		    if(err){
 		    	console.log(err);
 		    }else{
-		    	console.log("success");
+		    	console.log("successfully saved");
 		    }
 		});
 	}
@@ -35,22 +35,23 @@ module.exports = function(router, fs, path){
 			properties.saved.splice(properties.saved.indexOf(selectedProperty), 1);
 			properties.results.push(selectedProperty);
 			saveProperties(properties);
-			res.json(true);
+			res.send(properties);
 		}else{
-			res.json(false);
+			res.send(false);
 		}
 	});
 
 	router.post('/api/property/:id',  function(req, res) {
+		console.log("id",req.params.id);
 		var selectedProperty = findSelectedProperty(req.params.id, resultsProperties);
 
 		if(selectedProperty){
 			properties.saved.push(selectedProperty);
 			properties.results.splice(properties.results.indexOf(selectedProperty), 1);
 			saveProperties(properties);
-			res.json(true);
+			res.send(properties);
 		}else{
-			res.json(false);
+			res.send(false);
 		}
  	});
 }

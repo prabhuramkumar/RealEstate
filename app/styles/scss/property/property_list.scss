@@ -1,4 +1,14 @@
-.property-list__title {
+.list-page__title {
 	font-size: 30px;
 	margin: 20px 0;
+}
+
+.list-page__wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.property-list {
+	width: 30%;
+	margin: 30px;
 }

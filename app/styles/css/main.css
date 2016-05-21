@@ -88,7 +88,8 @@ html, body {
   display: flex;
   flex-direction: column;
   min-height: 400px;
-  height: calc(100% - 200px); }
+  height: calc(100% - 200px);
+  overflow: auto; }
 
 .header__desc,
 .footer__copyright {
@@ -96,8 +97,31 @@ html, body {
   color: #fff;
   letter-spacing: 3px; }
 
-.property-list__title {
+.list-page__title {
   font-size: 30px;
   margin: 20px 0; }
+
+.list-page__wrapper {
+  display: flex;
+  justify-content: center; }
+
+.property-list {
+  width: 30%;
+  margin: 30px; }
+
+.property {
+  border: 1px solid #ccc;
+  margin-bottom: 30px; }
+
+.property__header {
+  border-bottom: 1px solid #ccc; }
+
+.property__footer {
+  border-top: 1px solid #ccc; }
+
+.property__header,
+.property__body,
+.property__footer {
+  padding: 15px; }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,4 +1,12 @@
-<div class="property-list">
-	<h3 class="property-list__title">Property List</h3>
-	<property-directive></property-directive>
+<div class="list-page">
+	<h3 class="list-page__title">Property List</h3>
+	<div ng-if="!PropertyListCtrl.state.isLoading && !PropertyListCtrl.state.error">
+		<property-list-directive class="list-page__wrapper"></property-list-directive>
+	</div>
+	<div ng-if="PropertyListCtrl.state.isLoading">
+		<loader-directive></loader-directive>
+	</div>
+	<div ng-if="PropertyListCtrl.state.error">
+		<error-directive message="PropertyListCtrl.state.error"></error-directive>
+	</div>
 </div>
