@@ -1,10 +1,12 @@
 <ul class="property-list">
+	<li class="property-list__title"><h3>Results</h3></li>
 	<li  class="property-list__results" ng-repeat="property in PropertyListCtrl.propertyResults track by $index">
 		<property-directive property="property" saved="false"></property-directive>
 	</li>
 </ul>
 
 <ul class="property-list">
+	<li class="property-list__title"><h3>Saved</h3></li>
 	<li  class="property-list__saved" ng-repeat="property in PropertyListCtrl.propertySaved track by $index">
 		<property-directive property="property" saved="true"></property-directive>
 	</li>

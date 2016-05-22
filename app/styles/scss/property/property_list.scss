@@ -10,5 +10,15 @@
 
 .property-list {
 	width: 30%;
+	min-width: 230px;
 	margin: 30px;
+	padding: 30px;
+	background-color: #ececec;
+	border: 1px dotted #666;
+}
+
+.property-list__title {
+	padding: 10px;
+	font-size: 28px;
+	text-align: center;
 }

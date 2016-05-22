@@ -1,6 +1,18 @@
 .property {
+	position: relative;
 	border: 1px solid #ccc;
 	margin-bottom: 30px;
+	background-color: #fff;
+
+	&:hover {
+		.button {
+			display: block;
+		}
+
+		.transparent-layer {
+			display: block;
+		}
+	}
 }
 
 .property__header {
@@ -9,10 +21,47 @@
 
 .property__footer {
 	border-top: 1px solid #ccc;
+	font-weight: bold;
 }
 
 .property__header,
 .property__body,
 .property__footer {
 	padding: 15px;
+}
+
+.button {
+	display: none;
+    position: absolute;
+    border: 0;
+    background-color: #ffe512;
+    padding: 10px;
+    top: 50%;
+    transform: translate(-50%, 0%);
+    left: 50%;
+    min-width: 175px;
+    font-size: 14px;
+    text-transform: uppercase;
+    z-index: 2;
+    cursor: pointer;
+
+    &.button--add {
+    	background-color: #92da06;
+    }
+
+    &.button--delete {
+    	background-color: #f91c0b;
+    }
+}
+
+.transparent-layer {
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #000;
+	opacity: 0.7;
+	z-index: 1;
 }
