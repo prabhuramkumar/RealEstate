@@ -13,23 +13,23 @@ npm install
 bower install
 ```
 
-To start the server run
+To start the server
 ```
 grunt
 ```
-Now browse to the app at `http://localhost:8000/`.
+Now browse to the app at `http://localhost:8000/#/`.
 
+
+To run the jasmine specs.
 ```
 npm test
 ```
-
-To run the jasmine specs.
 
 
 # Plugins Used
 Angular, Angular Mocks, Ui Router, Karma, Jasmine, RequireJS, Grunt, SASS
 
-# Usual Plugins that are used
+# Usual Plugins that are not used
 BootStrap, lodash, jquery, angular-bootstrap, minification and bundler
 
 
