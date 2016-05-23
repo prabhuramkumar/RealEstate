@@ -1,7 +1,7 @@
 'use strict';
 define(['propertyListService'], function(propertyListService){
     describe('#propertyListService', function() {
-        var q, diferred, url, rootScope, http, data;
+        var q, diferred, url, rootScope, http, data, getUrl, postUrl, propertyListService;
 
         beforeEach(inject(function($http, $q, $rootScope){
             rootScope = $rootScope;
@@ -9,6 +9,11 @@ define(['propertyListService'], function(propertyListService){
             // service = $service;
             http = $http;
             q = $q;
+
+            console.log("***********************************");
+            console.log(typeof(propertyListService));
+            propertyListServiceObj = propertyListService();
+
 
             getUrl= "/api/properties";
             postUrl= "/api/property";
@@ -24,7 +29,7 @@ define(['propertyListService'], function(propertyListService){
             diferred.resolve(data);
             spyOn(http, "get").andReturn(diferred.promise);
 
-            propertyListService.getItems(http).then(function(result) {
+            propertyListServiceObj.getItems(http).then(function(result) {
               expect(http.get).toHaveBeenCalledWith(getUrl);
               expect(result).toEqual(data);
               done();
@@ -43,7 +48,7 @@ define(['propertyListService'], function(propertyListService){
             diferred.resolve(data);
             spyOn(http, "get").andReturn(diferred.promise);
 
-            propertyListService.addItem(http, data.results[0]).then(function(){
+            propertyListServiceObj.addItem(http, data.results[0]).then(function(){
                 propertyListService.getItems(http).then(function(result) {
                   expect(http.get).toHaveBeenCalledWith(getUrl);
                   expect(result).toEqual(data);
@@ -65,7 +70,7 @@ define(['propertyListService'], function(propertyListService){
             diferred.resolve(data);
             spyOn(http, "get").andReturn(diferred.promise);
 
-            propertyListService.deleteItem(http, data.saved[0]).then(function(){
+            propertyListServiceObj.deleteItem(http, data.saved[0]).then(function(){
                 propertyListService.getItems(http).then(function(result) {
                   expect(http.get).toHaveBeenCalledWith(getUrl);
                   expect(result).toEqual(data);

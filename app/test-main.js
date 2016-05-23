@@ -5,6 +5,7 @@ requirejs.config({
 	baseUrl: '/base/app/',
 	paths: {
 		"angular": "../bower_components/angular/angular",
+		"angular-mocks": "../bower_components/angular-mocks/angular-mocks.js",
 		"errorDirective": "common/error/error_directive",
 		"loaderDirective": "common/loader/loader_directive",
 		"propertyController": "components/property/property_controller",

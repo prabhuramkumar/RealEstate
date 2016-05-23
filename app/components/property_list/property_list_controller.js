@@ -1,14 +1,13 @@
 'use strict';
 
-define(['propertyListService'], function(propertyListService) {
-	function PropertyListController($http, rootScope) {
+define([], function() {
+	function PropertyListController($http, rootScope, propertyListService) {
 		var controller = this;
 		controller.state = propertyListService.state;
 		controller.propertyList = propertyListService.propertyList;
-		propertyListService.getItems($http);
+		propertyListService.getItems();
 	}
-
-	PropertyListController.$inject = ['$http', '$rootScope'];
+	PropertyListController.$inject = ['$http', '$rootScope', 'propertyListService'];
 
 	return PropertyListController;
 });
