@@ -1,7 +1,22 @@
-<div class="list-page">
+{{PropertyListCtrl.state.text}}
+<div class="list-page"  ng-init="PropertyListCtrl.getProperties()">
+
 	<h3 class="list-page__title">Property List</h3>
-	<div ng-if="!PropertyListCtrl.state.isLoading && !PropertyListCtrl.state.error">
-		<property-list-directive class="list-page__wrapper"></property-list-directive>
+	<div ng-if="!PropertyListCtrl.state.isLoading" class="list-page__wrapper">
+		<ul class="property-list">
+			<li class="property-list__title"><h3>Results</h3></li>
+			
+			<li  class="property-list__results" ng-repeat="property in PropertyListCtrl.propertyList.results track by $index">
+				<property-directive property="property" saved="false"></property-directive>
+			</li>
+		</ul>
+
+		<ul class="property-list">
+			<li class="property-list__title"><h3>Saved</h3></li>
+			<li  class="property-list__saved" ng-repeat="property in PropertyListCtrl.propertyList.saved track by $index">
+				<property-directive property="property" saved="true"></property-directive>
+			</li>
+		</ul>
 	</div>
 	<div ng-if="PropertyListCtrl.state.isLoading">
 		<loader-directive></loader-directive>

@@ -1,16 +1,15 @@
 define(['angular',
-	'propertyController',
+  'propertyController',
 	'propertyDirective',
 	'propertyListService',
-	'propertyListController',
-	'propertyListDirective'],
+	'propertyListController'],
 	
   function(angular, 
-  	propertyController, 
+    propertyController,
   	propertyDirective, 
   	propertyListService, 
-  	propertyListController,
-  	propertyListDirective) { 
+  	propertyListController
+  	) { 
 
     var propertyModule = angular.module('propertyModule', []);
 
@@ -19,5 +18,4 @@ define(['angular',
 
     propertyModule.factory('propertyListService', propertyListService);
     propertyModule.controller('propertyListController', propertyListController);
-    propertyModule.directive('propertyListDirective', propertyListDirective);
 });

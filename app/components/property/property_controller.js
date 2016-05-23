@@ -1,19 +1,20 @@
 define(['propertyListService'], function(propertyListService) {
-	function PropertyController($http){
-		controller = this;
-		var propertyList = propertyListService.propertyList;
+	function PropertyController($http) {
+		var controller = this;
 		
 		controller.addProperty = function(property){
-		    propertyList.addItem($http ,property);
+		    propertyListService.addItem($http, property).then(function(){
+		    	 propertyListService.getItems($http);
+		    });
 		}
 
 		controller.deleteProperty = function(property){
-		  	propertyList.deleteItem($http ,property);
+		  	propertyListService.deleteItem($http, property).then(function(){
+		    	 propertyListService.getItems($http);
+		    });
 		}
 	}
 
 	PropertyController.$inject = ['$http'];
 	return PropertyController;
 });
-
-

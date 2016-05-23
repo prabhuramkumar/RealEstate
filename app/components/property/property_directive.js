@@ -1,6 +1,6 @@
 'use strict';
 
-define(['propertyListService'], function(propertyListService) {
+define([], function() {
 	function propertyDirective() {
 		return {
 			restrict: "E",
@@ -9,7 +9,7 @@ define(['propertyListService'], function(propertyListService) {
 				property: "="
 			},
 			controller: 'propertyController',
-			controllerAs: 'propertyCtrl',
+			controllerAs: 'PropertyCtrl',
 			templateUrl: 'app/components/property/_property.html'
 		}
 	}

@@ -1,16 +1,24 @@
 'use strict';
 
 define([], function() {
-	var propertyList =  {}, state = {error: '',
-				isLoading: true};
 
-	propertyList.storedData = "";
+	var  state = {
+		error: '',
+		isLoading: true
+	};
 
-    propertyList.getItems = function($http) {
+	var propertyList = {
+		results: [],
+		saved: []
+	};
+
+
+     function getItems($http) {
         return $http.get('/api/properties').then(function(res){
 		    	if(res){
-		          propertyList.storedData = res.data;
-		          return propertyList.storedData;
+		    	 propertyList.results = angular.copy(res.data.results);	
+		         propertyList.saved = angular.copy(res.data.saved); 
+		         return res.data;
 		        }else{
 		        	state.error = "Loading Properties Failed";
 		        }
@@ -21,20 +29,13 @@ define([], function() {
 	        })
     }
 
-    propertyList.addItem = function($http, property) {
+    function addItem($http, property) {
     	state.isLoading = true;
      	return $http({
 		     		method: 'post',
 		     		url: '/api/property',
 		     		data: property,
 		     		headers: { 'Content-Type': 'application/json' }
-		     	}).then(function(res){
-			 		if(res){
-			 			propertyList.storedData.saved.push(property);
-			  			propertyList.storedData.results.splice(propertyList.storedData.results.indexOf(property), 1);
-			  		}else{
-			  			state.error = "Adding Properties Failed";
-			  		}
 		     	}).catch(function(error){
 		        	state.error = "Data Loading Error."
 		        }).finally(function(){
@@ -42,20 +43,13 @@ define([], function() {
 		        })
     }
 
-    propertyList.deleteItem = function($http, property) {
+    function deleteItem($http, property) {
     	state.isLoading = true;
      	return $http({
 		     		method: 'delete',
 		     		url: '/api/property',
 		     		data: property,
 		     		headers: { 'Content-Type': 'application/json' }
-		     	}).then(function(res){
-		     		if(res){
-			 			propertyList.storedData.results.push(property);
-			  			propertyList.storedData.saved.splice(propertyList.storedData.saved.indexOf(property), 1);
-			  		}else{
-			  			state.error = "Deleting Properties Failed";
-			  		}
 		     	}).catch(function(error){
 		        	state.error = "Data Loading Error."
 		        }).finally(function(){
@@ -63,8 +57,12 @@ define([], function() {
 		        })
     }
 
+
     return {
-    	propertyList: propertyList,
-    	state: state
+    	deleteItem: deleteItem,
+    	addItem: addItem,
+    	getItems: getItems,
+    	state: state,
+    	propertyList: propertyList
     }
 });

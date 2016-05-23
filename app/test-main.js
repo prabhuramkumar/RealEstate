@@ -1,9 +1,10 @@
-require.config({
-	baseUrl: 'app/',
+var tests = Object.keys(window.__karma__.files).filter(function (file) {
+    return (/spec\.js$/).test(file);
+});
+requirejs.config({
+	baseUrl: '/base/app/',
 	paths: {
 		"angular": "../bower_components/angular/angular",
-		"ui-router": "../bower_components/ui-router/release/angular-ui-router",
-		"routes": "router",
 		"errorDirective": "common/error/error_directive",
 		"loaderDirective": "common/loader/loader_directive",
 		"propertyController": "components/property/property_controller",
@@ -15,26 +16,26 @@ require.config({
 		"app": "app"
 	},
 
-
 	shim: {
 		'angular': {
             exports: 'angular'
         },
 
-		'ui-router': {
-            exports: 'ui-router',
-            deps: ['angular']
+        'angular-mocks': {
+            exports: 'angular-mocks'
         },
 
+
         'app': {
-        	deps: ['angular', 'commonModule', 'propertyModule', 'ui-router']
+        	deps: ['angular', 'commonModule', 'propertyModule']
         }
 
-	}
+	},
+
+	// Ask Require.js to load these files (all our tests).
+    deps: tests,
+
+    // Set test to start run once Require.js is done.
+    callback: window.__karma__.start
 });
 
-require(['app'],
-  function(App) {
-    App.initialize();
-  }
-);

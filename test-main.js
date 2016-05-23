@@ -2,12 +2,14 @@ var tests = Object.keys(window.__karma__.files).filter(function (file) {
     return (/spec\.js$/).test(file);
 });
 
-require.config({
-	baseUrl: './',
+
+requirejs.config({
+	baseUrl: '/base/',
 
 	paths: {
 		"angular": "bower_components/angular/angular",
 		"ui-router": "bower_components/ui-router/release/angular-ui-router",
+		"angular-mocks": "bower_components/angular-mocks/angular-mocks.js",
 		"routes": "config/router",
 		"commonModule": "app/common/common_module",
 		"propertyModule": "app/components/property_module",
@@ -17,6 +19,10 @@ require.config({
 	shim: {
 		'angular': {
             exports: 'angular'
+        },
+
+        'angular-mocks': {
+            exports: 'angular-mocks'
         },
 
 		'ui-router': {
