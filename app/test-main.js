@@ -26,7 +26,6 @@ requirejs.config({
             exports: 'angular-mocks'
         },
 
-
         'app': {
         	deps: ['angular', 'commonModule', 'propertyModule']
         }

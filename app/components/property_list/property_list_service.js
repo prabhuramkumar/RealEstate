@@ -28,7 +28,7 @@ define([], function() {
 		        	state.error = dataError
 		        }).finally(function(){
 		        	state.isLoading = false;
-		        })
+		        });
 	    }
 
 	    function addItem(property) {
@@ -42,7 +42,7 @@ define([], function() {
 			        	state.error = dataError
 			        }).finally(function(){
 			        	state.isLoading = false;
-			        })
+			        });
 	    }
 
 	    function deleteItem(property) {
@@ -56,7 +56,7 @@ define([], function() {
 			        	state.error = dataError
 			        }).finally(function(){
 			        	state.isLoading = false;
-			        })
+			        });
 	    }
 
 	    return {
