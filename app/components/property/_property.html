@@ -1,5 +1,5 @@
 <div class="property">
-	<div class="property__header" style="background-color: {{property.agency.brandingColors.primary}}">{{property.id}}<img src="{{property.agency.logo}}"/></div>
+	<div class="property__header" style="background-color: {{property.agency.brandingColors.primary}}"><img src="{{property.agency.logo}}"/></div>
 	<div class="property__body"><img src="{{property.mainImage}}" width="100%" /></div>
 	<div class="property__footer">Price: {{property.price}}</div>
 	<button class="button button--add" ng-if="!saved" ng-click="PropertyCtrl.addProperty(property)">Add</button>

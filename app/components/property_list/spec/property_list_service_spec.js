@@ -1,28 +1,80 @@
 'use strict';
 define(['propertyListService'], function(propertyListService){
     describe('#propertyListService', function() {
-        var q, diferred, url, rootScope, http;
+        var q, diferred, url, rootScope, http, data;
 
-        beforeEach(angular.mock.inject(function($http, $q, $rootScope){
+        beforeEach(inject(function($http, $q, $rootScope){
             rootScope = $rootScope;
             diferred = $q.defer();
             // service = $service;
             http = $http;
             q = $q;
 
-            url= "/api/properties";
+            getUrl= "/api/properties";
+            postUrl= "/api/property";
         }));
 
-        describe('on getItems method call', function(){
-          it("should getItems have been called and return property list", function (){
+        describe('#getItems', function(){
+
+          it("should getItems have been called and return property list", function (done) {
+            data = {
+                results: [{"id": "1"}, {"id": "2"}],
+                saved: [{"id": "3"}, {"id": "4"}]
+            }
+            diferred.resolve(data);
             spyOn(http, "get").andReturn(diferred.promise);
-            diferred.resolve({"data": "some"});
 
             propertyListService.getItems(http).then(function(result) {
-              expect(http.get).toHaveBeenCalledWith(url);
-              expect(result).not.toEqual("some");
+              expect(http.get).toHaveBeenCalledWith(getUrl);
+              expect(result).toEqual(data);
+              done();
             });
           });
+
+        });
+
+        describe('#addItem', function(){
+            
+          it("should addItem should add an item to the saved list and remove item from results list", function (done) {
+            data = {
+                results: [{"id": "2"}],
+                saved: [{"id": "1"}, {"id": "3"}, {"id": "4"}]
+            }
+            diferred.resolve(data);
+            spyOn(http, "get").andReturn(diferred.promise);
+
+            propertyListService.addItem(http, data.results[0]).then(function(){
+                propertyListService.getItems(http).then(function(result) {
+                  expect(http.get).toHaveBeenCalledWith(getUrl);
+                  expect(result).toEqual(data);
+                  done();
+                });
+            });
+            
+          });
+
+        });
+
+        describe('#deleteItem', function(){
+            
+          it("should deleteItem should delete an item from the saved list and add it to the results list", function (done) {
+            data = {
+                results: [{"id": "1"}, {"id": "2"}],
+                saved: [{"id": "3"}, {"id": "4"}]
+            }
+            diferred.resolve(data);
+            spyOn(http, "get").andReturn(diferred.promise);
+
+            propertyListService.deleteItem(http, data.saved[0]).then(function(){
+                propertyListService.getItems(http).then(function(result) {
+                  expect(http.get).toHaveBeenCalledWith(getUrl);
+                  expect(result).toEqual(data);
+                  done();
+                });  
+            });
+            
+          });
+
         });
 
     });
