@@ -20,8 +20,9 @@ module.exports = function(router, fs, path){
 
 	router.delete('/api/property', function (req, res) {
 		var selectedProperty = req.body;
+		console.log(selectedProperty);
 		if(selectedProperty){
-			properties.saved =  properties.saved.filter(function(property){
+			properties.saved = properties.saved.filter(function(property){
 				return property.id != selectedProperty.id;
 			});
 			properties.results.push(selectedProperty);

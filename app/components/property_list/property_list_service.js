@@ -16,11 +16,14 @@ define([], function() {
 		var dataError = "Data Loading Error.";
 
 	    function getItems() {
-	        return $http.get('/api/properties').then(function(res){
+	        return $http({
+			     		method: 'get',
+			     		url: '/api/properties'
+			     	}).then(function(res){
 			    	if(res){
-			    	 propertyList.results = angular.copy(res.data.results);	
-			         propertyList.saved = angular.copy(res.data.saved); 
-			         return res.data;
+				    	 propertyList.results = angular.copy(res.data.results);	
+				         propertyList.saved = angular.copy(res.data.saved); 
+				         return res.data;
 			        }else{
 			        	state.error = "Loading Properties Failed";
 			        }
