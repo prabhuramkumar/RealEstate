@@ -15,18 +15,18 @@ define([], function() {
 
 		var dataError = "Data Loading Error.";
 
+		function storePropertyValue(res){
+	    	 propertyList.results = angular.copy(res.data.results);	
+	         propertyList.saved = angular.copy(res.data.saved); 
+		}
+
 	    function getItems() {
 	        return $http({
 			     		method: 'get',
 			     		url: '/api/properties'
 			     	}).then(function(res){
-			    	if(res){
-				    	 propertyList.results = angular.copy(res.data.results);	
-				         propertyList.saved = angular.copy(res.data.saved); 
-				         return res.data;
-			        }else{
-			        	state.error = "Loading Properties Failed";
-			        }
+			    	storePropertyValue(res);
+			    	return res.data;
 		        }).catch(function(error){
 		        	state.error = dataError
 		        }).finally(function(){
@@ -42,7 +42,7 @@ define([], function() {
 			     		data: property,
 			     		headers: { 'Content-Type': 'application/json' }
 			     	}).catch(function(error){
-			        	state.error = dataError
+			        	state.error = dataError;
 			        }).finally(function(){
 			        	state.isLoading = false;
 			        });

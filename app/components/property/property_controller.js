@@ -3,15 +3,11 @@ define([], function() {
 		var controller = this;
 
 		controller.addProperty = function(property){
-		    propertyListService.addItem(property).then(function(){
-		    	 propertyListService.getItems();
-		    });
+		    propertyListService.addItem(property);
 		}
 
 		controller.deleteProperty = function(property){
-		  	propertyListService.deleteItem(property).then(function(){
-		    	 propertyListService.getItems();
-		    });
+		  	propertyListService.deleteItem(property);
 		}
 	}
 
