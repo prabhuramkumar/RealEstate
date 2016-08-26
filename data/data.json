@@ -1,17 +1,6 @@
 {
     "results": [
         {
-            "price": "$826,500",
-            "agency": {
-                "brandingColors": {
-                    "primary": "#57B5E0"
-                },
-                "logo": "http://i1.au.reastatic.net/agencylogo/XCEWIN/12/20150807093203.gif"
-            },
-            "id": "3",
-            "mainImage": "http://i4.au.reastatic.net/640x480/98cee1b2a3a64329921fc38f7e2926a78d41fcc683fc48fb8a8ef2999b14c027/main.jpg"
-        },
-        {
             "price": "$726,500",
             "agency": {
                 "brandingColors": {
@@ -21,9 +10,7 @@
             },
             "id": "1",
             "mainImage": "http://i2.au.reastatic.net/640x480/20bfc8668a30e8cabf045a1cd54814a9042fc715a8be683ba196898333d68cec/main.jpg"
-        }
-    ],
-    "saved": [
+        },
         {
             "price": "$560,520",
             "agency": {
@@ -45,6 +32,19 @@
             },
             "id": "4",
             "mainImage": "http://i2.au.reastatic.net/640x480/5e84d96722dda3ea2a084d6935677f64872d1d760562d530c3cabfcb7bcda9c2/main.jpg"
+        }
+    ],
+    "saved": [
+        {
+            "price": "$826,500",
+            "agency": {
+                "brandingColors": {
+                    "primary": "#57B5E0"
+                },
+                "logo": "http://i1.au.reastatic.net/agencylogo/XCEWIN/12/20150807093203.gif"
+            },
+            "id": "3",
+            "mainImage": "http://i4.au.reastatic.net/640x480/98cee1b2a3a64329921fc38f7e2926a78d41fcc683fc48fb8a8ef2999b14c027/main.jpg"
         }
     ]
 }

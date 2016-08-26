@@ -37,7 +37,7 @@ define(['propertyModule'], function(){
 
         describe('#init', function(){
             it('should check the intial values', function () {
-                expect(propertyListController.state).toEqual(propertyListService.state);
+                expect(propertyListController.isLoading).toBeTruthy();
                 expect(propertyListController.propertyList).toEqual(undefined);
             });
 
@@ -47,6 +47,7 @@ define(['propertyModule'], function(){
                 expect(propertyListService.getItems).toHaveBeenCalled();
                 propertyListService.getItems().then(function(data){
                     expect(propertyListController.propertyList).toEqual(data);
+                    expect(propertyListController.isLoading).toBeFalsy();
                 });
             })
         });

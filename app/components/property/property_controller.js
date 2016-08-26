@@ -3,11 +3,21 @@ define([], function() {
 		var controller = this;
 
 		controller.addProperty = function(property){
-		    propertyListService.addItem(property);
+			controller.isLoading = true;
+		    propertyListService.addItem(property).catch(function(error){
+	        	controller.error = "Adding property failed, Try again."
+	        }).finally(function(){
+	        	controller.isLoading = false;
+	        });
 		}
 
 		controller.deleteProperty = function(property){
-		  	propertyListService.deleteItem(property);
+			controller.isLoading = true;
+		  	propertyListService.deleteItem(property).catch(function(error){
+	        	controller.error = "Deleting property failed, Try again."
+	        }).finally(function(){
+	        	controller.isLoading = false;
+	        });
 		}
 	}
 

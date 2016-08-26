@@ -1,7 +1,7 @@
 'use strict';
 define(['propertyModule'], function(){
     describe('#propertyListService', function() {
-        var url, rootScope, http, propsList, getUrl, postUrl,propertyList, httpBackend;
+        var url, rootScope, http, propsList, getUrl, postUrl, propertyService, httpBackend;
         beforeEach(module('propertyModule'));
 
         beforeEach(inject(function($httpBackend, $rootScope, propertyListService){
@@ -9,22 +9,21 @@ define(['propertyModule'], function(){
             rootScope = $rootScope;
             getUrl= "/api/properties";
             url= "/api/property";
-            propertyList = propertyListService;
+            propertyService = propertyListService;
+            propsList = {
+                results: [{"id": "1"}, {"id": "2"}],
+                saved: [{"id": "3"}, {"id": "4"}]
+            }
         }));
 
         describe('#getItems', function(){
 
           it("should getItems have been called and return property list", function(done) {
-            propsList = {
-                "data":{
-                    results: [{"id": "1"}, {"id": "2"}],
-                    saved: [{"id": "3"}, {"id": "4"}]
-                }
-            }
+            
             httpBackend.expectGET(getUrl).respond(propsList);
            
-            propertyList.getItems().then(function(results){
-                expect(results.data).toEqual(propsList.data);
+            propertyService.getItems().then(function(){
+                expect(propertyService.propertyList).toEqual(propsList);
             });
             httpBackend.flush();
           });
@@ -41,9 +40,9 @@ define(['propertyModule'], function(){
             }
             httpBackend.expectPOST(url).respond(propsList);
 
-            propertyListService.addItem({"id": "1"}).then(function(results){
+            propertyService.addItem({"id": "1"}).then(function(){
                 
-                expect(results.data).toEqual(propsList);
+                expect(propertyService.propertyList).toEqual(propsList);
             });
             httpBackend.flush();
           }));
@@ -58,8 +57,8 @@ define(['propertyModule'], function(){
                 saved: [{"id": "3"}, {"id": "4"}]
             }
             httpBackend.expectDELETE(url).respond(propsList);
-            propertyListService.deleteItem({"id": "1"}).then(function(results){
-                 expect(results.data).toEqual(propsList);
+            propertyService.deleteItem({"id": "1"}).then(function(results){
+                 expect(propertyService.propertyList).toEqual(propsList);
             });
             httpBackend.flush();
           }));

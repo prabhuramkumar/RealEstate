@@ -4,5 +4,11 @@
 	<div class="property__footer">Price: {{property.price}}</div>
 	<button class="button button--add" ng-if="!saved" ng-click="PropertyCtrl.addProperty(property)">Add</button>
 	<button class="button button--delete" ng-if="saved" ng-click="PropertyCtrl.deleteProperty(property)">Delete</button>
+	<div ng-if="PropertyCtrl.error">
+		<error-directive message="PropertyCtrl.error"></error-directive>
+	</div>
+	<div ng-if="PropertyListCtrl.isLoading">
+		<loader-directive></loader-directive>
+	</div>
 	<div class="transparent-layer"></div>
 </div>
