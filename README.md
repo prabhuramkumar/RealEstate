@@ -25,7 +25,6 @@ To run the jasmine specs.
 npm test
 ```
 
-sample 
 # Plugins Used
 Angular, Angular Mocks, Ui Router, Karma, Jasmine, RequireJS, Grunt, SASS
 
